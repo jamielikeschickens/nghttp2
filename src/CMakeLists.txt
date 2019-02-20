@@ -242,7 +242,7 @@ if(ENABLE_ASIO_LIB)
   )
 
   if(ENABLE_STATIC_LIB)
-  add_library(nghttp2_asio_static STATIC
+      add_library(nghttp2_asio_static STATIC
      ${NGHTTP2_ASIO_SOURCES}
      $<TARGET_OBJECTS:http-parser>
   )
@@ -250,7 +250,7 @@ if(ENABLE_ASIO_LIB)
     ${OPENSSL_INCLUDE_DIRS}
     ${Boost_INCLUDE_DIRS}
   )
-  target_include_directories(nghttp2_asio_static INTERFACE
+  target_include_directories(nghttp2_asio_static PUBLIC
     "${CMAKE_CURRENT_BINARY_DIR}/../lib/includes"
     "${CMAKE_CURRENT_SOURCE_DIR}/../lib/includes"
     "${CMAKE_CURRENT_SOURCE_DIR}/includes"
