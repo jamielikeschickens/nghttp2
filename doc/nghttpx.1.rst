@@ -235,7 +235,6 @@ Connections
     pattern,            :option:`--backend-read-timeout`           and
     :option:`--backend-write-timeout` are used.
 
-
     "group=<GROUP>"  parameter specifies  the name  of group
     this backend address belongs to.  By default, it belongs
     to  the unnamed  default group.   The name  of group  is
@@ -249,7 +248,8 @@ Connections
     address  which  belongs  to  the  same  group  specifies
     "group-weight",   its    weight   is   used.     If   no
     "group-weight"  is  specified  for  all  addresses,  the
-    weight of a group becomes 1.
+    weight of a group becomes 1.  "group" and "group-weight"
+    are ignored if session affinity is enabled.
 
     "weight=<N>"  parameter  specifies  the  weight  of  the
     backend  address  inside  a  group  which  this  address
@@ -257,7 +257,8 @@ Connections
     selected by  the load balancing algorithm.   <N> must be
     [1,  256] inclusive.   The  weight 8  has  4 times  more
     weight  than weight  2.  If  this parameter  is omitted,
-    weight becomes 1.
+    weight  becomes  1.   "weight"  is  ignored  if  session
+    affinity is enabled.
 
     Since ";" and ":" are  used as delimiter, <PATTERN> must
     not  contain these  characters.  Since  ";" has  special
@@ -299,7 +300,7 @@ Connections
     default.  Any  requests which come through  this address
     are replied with 200 HTTP status, without no body.
 
-    To  accept   PROXY  protocol   version  1   on  frontend
+    To accept  PROXY protocol  version 1  and 2  on frontend
     connection,  specify  "proxyproto" parameter.   This  is
     disabled by default.
 

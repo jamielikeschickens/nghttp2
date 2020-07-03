@@ -505,7 +505,8 @@ struct DownstreamAddrGroupConfig {
   DownstreamAddrGroupConfig(const StringRef &pattern)
       : pattern(pattern),
         affinity{SessionAffinity::NONE},
-        redirect_if_not_tls(false) {}
+        redirect_if_not_tls(false),
+        timeout{} {}
 
   StringRef pattern;
   StringRef mruby_file;
@@ -808,6 +809,7 @@ struct LoggingConfig {
     bool syslog;
   } error;
   int syslog_facility;
+  int severity;
 };
 
 struct RateLimitConfig {
